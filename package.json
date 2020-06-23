@@ -1,0 +1,19 @@
+{
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^3.9.5",
+    "gts": "^2.0.2",
+    "@types/node": "^13.11.1"
+  },
+  "private": true,
+  "workspaces": ["schemas"],
+  "scripts": {
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "yarn run compile",
+    "pretest": "yarn run compile",
+    "posttest": "yarn run check"
+  }
+}
