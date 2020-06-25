@@ -1,3 +1,5 @@
+import { Permission } from './authorization';
+
 export type User = {
     id: number;
     email: string;
@@ -9,5 +11,5 @@ export type Role = {
     id: number;
     name: string;
     desc: string;
-    permissions: []
+    permissions: Permission[]
 }

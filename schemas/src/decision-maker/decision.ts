@@ -15,9 +15,5 @@ export type Weight = {
 };
 export type Order = [Factor, 'desc'|'asc'][];
 export type Result = EntityCommonFields & {
-    ordered: [Option, ...Option[]];
+    result: [Option, ...Option[]];
 };
-export type Pick = EntityCommonFields & {
-    option: Option;
-    
-}

@@ -20,7 +20,7 @@ export type Option = {
     img: string;
     score: Score;
     scores: (Score|undefined)[]; // map to factors
-} 
+}
 export type Score = {
     manual: boolean;
     score: number;
