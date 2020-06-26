@@ -1,0 +1,9 @@
+{
+  "name": "schemas",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:shuninghuang/shutools.git",
+  "author": "Shuning Huang",
+  "license": "MIT",
+  "private": true
+}

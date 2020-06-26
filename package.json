@@ -6,7 +6,7 @@
     "@types/node": "^13.11.1"
   },
   "private": true,
-  "workspaces": ["schemas"],
+  "workspaces": ["schemas", "decision-maker-api"],
   "scripts": {
     "check": "gts check",
     "clean": "gts clean",
