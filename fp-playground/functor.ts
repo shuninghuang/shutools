@@ -5,16 +5,16 @@ export abstract class Functor<T> {
     //     }
     //     return new Functor<T>(f(x));
     // }
-    constructor(readonly value: T) {}
     abstract map<R>(f: (x: T) => R): Functor<R>;
     inspect() {
         return "Map(${inspect(this.$value)})";
     }
 }
 export class PointedFunctor<T> extends Functor<T> {
-    static of<T>(x: T) {
+    static of<T>(x: T): PointedFunctor<T> {
         return new PointedFunctor<T>(x);
     }
+    constructor(readonly value: T) {super()}
     map<R>(f: (x: T) => R): PointedFunctor<R> {
         return PointedFunctor.of<R>(f(this.value));
     }
