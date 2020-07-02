@@ -5,9 +5,9 @@ import {compose} from "..";
 describe('compose', () => {
     it('example', () => {
         const addOne = (num: number) => num + 1;
-        const multi = (num: number) => num * num;
+        const multi = (num: number): string => `final result is: ${num * num}`;
 
-        const addAndMulti = compose<number, number>(multi, addOne);
-        addAndMulti(5).should.equal(36);
+        const addAndMulti = compose<string, number>(multi, addOne);
+        addAndMulti(5).should.equal(multi(6));
     })
 })
