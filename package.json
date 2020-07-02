@@ -3,10 +3,14 @@
   "devDependencies": {
     "typescript": "^3.9.5",
     "gts": "^2.0.2",
-    "@types/node": "^13.11.1"
+    "@types/node": "^13.11.1",
+    "@types/mocha": "^7.0.2",
+    "mocha": "^8.0.1",
+    "should": "^13.2.3",
+    "ts-mocha": "^7.0.0"
   },
   "private": true,
-  "workspaces": ["schemas", "decision-maker-api"],
+  "workspaces": ["schemas", "flowers-api", "fp-playground"],
   "scripts": {
     "check": "gts check",
     "clean": "gts clean",
