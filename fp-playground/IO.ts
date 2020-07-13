@@ -1,5 +1,5 @@
 import { compose } from './compose';
-import { Functor, Monad } from './functor'; 
+import { Functor, Pointed } from './functor'; 
 
 export class IO<I> implements Functor<I> {
     static of<T>(x: T): IO<T> {

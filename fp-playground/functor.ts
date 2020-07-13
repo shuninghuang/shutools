@@ -1,4 +1,6 @@
 import { IO } from "./IO";
+import { compose } from "./compose";
+import { curry } from "./curry";
 
 export abstract class InspectableClass {
     inspect() {
@@ -6,12 +8,10 @@ export abstract class InspectableClass {
     }
 }
 export interface Functor<T> {
-    map: <O>(f: (x: T) => O) => Functor<O>;
+    map: (f: (x: T) => unknown) => Functor<ReturnType<typeof f>>|Functor<T>;
 }
-export interface Monad<I> extends Functor<Functor<I>> {
-    join: () => Functor<I>;
-}
-export interface Pointed<T> {
-    value: T;
-    of: <I, T extends Pointed<I>>(x: I) => T;
+export abstract class Pointed<T> implements Functor<T> {
+    abstract value: () => T;
+    static of: <I>(x: I) => Pointed<I>;
+    abstract map: <O>(f: (x: T) => O) => Functor<O>;
 }
