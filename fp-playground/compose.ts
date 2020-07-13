@@ -1,5 +1,5 @@
 type compose_1<T> = (x?: T) => any;
 type compose_2<T> = (x: any) => T;
-export function compose<O, I = undefined>(f: compose_2<O>, g: compose_1<I>): (x?: I) => O {
-    return (x?: I) => f(g(x));
+export function compose<SO, FI = undefined>(f: compose_2<SO>, g: compose_1<FI>): (x?: FI) => SO {
+    return (x?: FI) => f(g(x));
 }

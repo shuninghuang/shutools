@@ -1,3 +1,3 @@
-export function curry<T, S, R>(f: (x: T, y: S) => R): (x: T) => (y: S) => R {
-    return (x: T) => (y: S) => f(x, y);
+export function curry<FI, SI, O>(f: (x?: FI, y?: SI) => O): (x?: FI) => (y?: SI) => O {
+    return (x?: FI) => (y?: SI) => f(x, y);
 }

@@ -1,21 +1,17 @@
-export abstract class Functor<T> {
-    // static of<T>(x: unknown) {
-    //     const f: (x: unknown) => T = (x) => {
-    //         return x as T;
-    //     }
-    //     return new Functor<T>(f(x));
-    // }
-    abstract map<R>(f: (x: T) => R): Functor<R>;
+import { IO } from "./IO";
+
+export abstract class InspectableClass {
     inspect() {
         return "Map(${inspect(this.$value)})";
     }
 }
-export class PointedFunctor<T> extends Functor<T> {
-    static of<T>(x: T): PointedFunctor<T> {
-        return new PointedFunctor<T>(x);
-    }
-    constructor(readonly value: T) {super()}
-    map<R>(f: (x: T) => R): PointedFunctor<R> {
-        return PointedFunctor.of<R>(f(this.value));
-    }
+export interface Functor<T> {
+    map: <O>(f: (x: T) => O) => Functor<O>;
+}
+export interface Monad<I> extends Functor<Functor<I>> {
+    join: () => Functor<I>;
+}
+export interface Pointed<T> {
+    value: T;
+    of: <I, T extends Pointed<I>>(x: I) => T;
 }

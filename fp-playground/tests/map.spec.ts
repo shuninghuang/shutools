@@ -1,14 +1,13 @@
 import "mocha";
 import "should";
-import { map, Functor, PointedFunctor, compose } from "..";
+import { map, compose, IO } from "..";
 
 describe('map', () => {
     it('example', () => {
-        const currTime: () => PointedFunctor<number> = () => PointedFunctor.of(new Date().getHours());
-        const hrs: PointedFunctor<number> = PointedFunctor.of<number>(3);
+        const currTime: IO<number> = IO.of(new Date().getHours());
         const printTime = (x: number) => `it is ${x}o'clock`
-        const printCurrTime = compose(map<number, PointedFunctor<number>, string, PointedFunctor<string>>(printTime), currTime);
+        const printCurrTime = map<number, IO<number>, string, IO<string>>(printTime)(currTime);
 
-        printCurrTime().value.should.be.equal(printTime(new Date().getHours()));
+        printCurrTime.unsafePerformIO().should.be.equal(printTime(new Date().getHours()));
     })
 })

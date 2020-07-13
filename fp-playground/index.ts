@@ -3,6 +3,7 @@ export { compose } from "./compose"
 export { map } from "./map";
 export * from "./IO";
 export * from "./functor"
+export * from "./chain";
 const id = <T>(x: T) => x;
 
 
