@@ -24,9 +24,11 @@ describe('MonadIO', () => {
         logFileName.should.be.instanceOf(IO);
     });
     it('join', () => {
-        const manad = IO.of<IO<string>>(IO.of<string>('hi'));
-        const io: IO<string> = manad.join();
+        const monad = IO.of<IO<string>>(IO.of<string>('hi'));
+        const io: IO<string> = monad.join();
 
+        monad.should.be.instanceOf(IO);
+        monad.unsafePerformIO().should.be.instanceOf(IO);
         io.should.be.instanceOf(IO);
         io.unsafePerformIO().should.be.equal('hi');
     })
